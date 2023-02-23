@@ -1,5 +1,5 @@
 abstract class AppRoutes {
-  static const splashScreenPage = '/splashScreen';
+  static const splashPage = '/splashScreen';
   static const breedsPage = '/breeds';
-  static const breedsDetailPage = '/breedsDetail';
+  static const breedDetailPage = '/breedsDetail';
 }

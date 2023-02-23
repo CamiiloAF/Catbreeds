@@ -19,12 +19,15 @@ class BreedsList extends ConsumerWidget {
           child: const BreedSearchInput(),
         ),
         breeds.isEmpty
-            ? const Center(
+            ? Center(
                 child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: const AlwaysScrollableScrollPhysics(),
                   child: SizedBox(
                     child: Center(
-                      child: Text('No se encontraron resultados'),
+                      child: Text(
+                        'No hemos encontrado resultados',
+                        style: Theme.of(context).textTheme.caption,
+                      ),
                     ),
                   ),
                 ),

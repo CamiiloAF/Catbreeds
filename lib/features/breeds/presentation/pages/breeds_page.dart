@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/exceptions/failure.dart';
-import '../../../shared/widgets/dialogs/alerts.dart';
-import 'manager/breeds_provider.dart';
-import 'widgets/breeds_list.dart';
+import '../../../../core/exceptions/failure.dart';
+import '../../../../shared/widgets/dialogs/alerts.dart';
+import '../manager/breeds_provider.dart';
+import '../widgets/breeds_list.dart';
 
 class BreedsPage extends ConsumerStatefulWidget {
   const BreedsPage({Key? key}) : super(key: key);
@@ -20,7 +20,7 @@ class _BreedsPageState extends ConsumerState<BreedsPage> {
     super.initState();
   }
 
-  Future<void> _loadBreeds() async {
+  Future<void> _loadBreeds({bool isRefresh = false}) async {
     try {
       await ref.read(breedProvider).getBreeds();
     } on Failure catch (e) {
@@ -36,7 +36,9 @@ class _BreedsPageState extends ConsumerState<BreedsPage> {
         title: const Text('Catbreeds'),
       ),
       body: RefreshIndicator(
-        onRefresh: () => _loadBreeds(),
+        onRefresh: () {
+          return _loadBreeds(isRefresh: true);
+        },
         child: Consumer(
           builder: (_, WidgetRef ref, __) {
             final breedsRiverpod = ref.watch(breedProvider);

@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
     return ProviderScope(
       child: MaterialApp(
         navigatorKey: navigatorKey,
-        title: 'Michis',
+        title: 'Catbreeds',
         theme: AppTheme.lightTheme,
         onGenerateRoute: RouteGenerator.generateRoute,
         initialRoute: '/',
